@@ -1,44 +1,66 @@
- import React, {Component} from 'react';
- 
- class Product extends Component {
-    // constructor() {
-    //     super();
+import React, {Component} from 'react';
 
-    //     this.state = {
-    //         newProduct: {}
-    //     }
-    // }
-    
-    _deleteProduct = () => {
-       
+class Product extends Component {
 
-        this.props.deleteProduct(this.props.id);
-    };
-    _addProductToCart = () => {
+  _deleteProduct = () => {
+    this.props.deleteProduct(this.props.index);
+  };
 
-        this.props.addToCart(this.props.id);
-        console.log(this.props.id);
-    }   
+  _addToCart = () => {
+    this.props.addToCart(this.props.index);
+  };
 
-   render() {
-     const productName = this.props.productName;
-     const description = this.props.description;
-     const price = this.props.price;
-     const admin = this.props.adminMode;
-       
-     return (
-         <div>
-              {console.log(productName)}
-           <h3>{productName}</h3>
-           <div>{description}</div>
-           <div>{price}</div>
+
+
+//   _showOptions = () => {
+//     const viewMode = this.props.viewMode;
+
+//     const adminOptions =
+//         <div>
+//           <button onClick={this._deleteProduct}>Delete</button>
+//         </div>;
+
+//     const shopOptions =
+//         <div>
+//           <button onClick={this._addToCart}>Add To Cart</button>
+//         </div>;
+
+//     const cartOptions =
+//         <div>
+//           <button onClick={this._removeFromCart}>Remove From Cart</button>
+//         </div>;
+
+//     switch (viewMode) {
+//       case 'ADMIN':
+//         return adminOptions;
+//       case 'SHOP':
+//         return shopOptions;
+//       case 'CART':
+//         return cartOptions;
+//       default:
+//         return null;
+//     }
+//   };
+
+  render() {
+    const productName = this.props.productName;
+    const description = this.props.description;
+    const price = this.props.price;
+    const admin = this.props.adminMode;
+
+    return (
+        <div>
+          <h3>{productName}</h3>
+          <div>{description}</div>
+          <div>{price}</div>
+
            {admin? 
            <button onClick={this._deleteProduct}>Delete</button>:null}
-           <button onClick={this._addProductToCart}>Add To Shopping Cart</button>
-         </div>
-     );
- 
-   }
- }
- 
- export default Product;
+           <button onClick={this._addToCart}>Add To Shopping Cart</button>
+        </div>
+    );
+
+  }
+}
+
+export default Product;

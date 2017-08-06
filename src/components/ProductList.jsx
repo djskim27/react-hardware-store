@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 
 import Product from './Product';
@@ -9,13 +8,13 @@ class ProductList extends Component {
 
         const productComponents = productList.map((product, index) => {
             return <Product
-                admiMode={this.props.adminMode}
+                adminMode={this.props.adminMode}
                 productName={product.productName}
                 description={product.description}
                 price={product.price}
                 key={index}
-                id={index}
-                deleteProductFromListByIndex={this.props.deleteProductFromListByIndex}
+                index={index}
+                deleteProduct={this.props.deleteProductFromProductList}
                 addToCart={this.props.addToCart} 
                 />
         });

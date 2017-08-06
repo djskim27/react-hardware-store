@@ -58,8 +58,9 @@ class HomePage extends Component {
     }
 
     _addToCart = (index) => {
-        const cartList = [...this.state.cartList];
         const product = [...this.state.productList[index]]
+        const cartList = [...this.state.cartList];
+       
         cartList.push(product);
         this.setState({ cartList });
     }

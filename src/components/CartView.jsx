@@ -1,16 +1,25 @@
 import React, { Component } from 'react';
-import ProductList from './ProductList'
+
+import ProductList from './ProductList';
+
 class CartView extends Component {
-    render(){
-        const productList = this.props.productList;
-        return(
+    render() {
+      
+
+        return (
             <div>
-                <h1>Shopping Cart</h1>
-                <h2>Shopper's Products</h2>
-                <ProductList
-                productList = {productList} />
+                <h1>Cart View</h1>
+
+                <ProductList 
+                    productList={this.props.productList} 
+                    
+                    addToCart={this.props.addToCart} 
+                    />
+
+            
             </div>
-        )
+        );
+
     }
 }
 
