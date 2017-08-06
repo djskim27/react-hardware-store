@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AdminView from './AdminView'
 import ShopView from './ShopView'
+import CartView from './CartView'
 
 class HomePage extends Component {
 
@@ -22,7 +23,9 @@ class HomePage extends Component {
                     price: 0.12,
                 }
             ],
-            AdminMode: false
+            AdminMode: false,
+            cartList: []
+            
             
         };
     }
@@ -54,6 +57,13 @@ class HomePage extends Component {
         this.setState({AdminMode});
     }
 
+    _addToCart = (index) => {
+        const cartList = [...this.state.cartList];
+        const product = [...this.state.productList[index]]
+        cartList.push(product);
+        this.setState({ cartList });
+    }
+
     render() {
         return (
             <div>
@@ -72,10 +82,23 @@ class HomePage extends Component {
                     {this.state.AdminMode ?
                         <AdminView adminMode = {this.state.AdminMode}
                             productList={this.state.productList}
+                           
                             addNewProductToProductList={this._addNewProductToProductList}
                             deleteProductFromProductList={this._deleteProductFromProductList}
                            /> :
-                        <ShopView adminMode = {this.state.AdminMode} productList={this.state.productList}/>}
+                        <div>
+                        <ShopView 
+                        adminMode = {this.state.AdminMode} productList={this.state.productList}
+                      
+                        addToCart={this._addToCart}
+                        />
+                        <CartView
+                        productList={this.state.cartList}
+                        />
+                        </div>
+                       }
+                        
+                        
                 </div>
             </div>
         );
